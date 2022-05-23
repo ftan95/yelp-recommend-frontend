@@ -28,11 +28,16 @@
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
+/* @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
   }
   to {
     transform: rotate(360deg);
   }
+} */
+
+.recommend {
+  border: solid 1px white;
+  margin: 15px 0 15px 0;
 }
