@@ -11,6 +11,7 @@ function App() {
   const [busInfoList, setBusInfoList] = useState([]);
   const [user, setUser] = useState({});
   const [show, setShow] = useState(true);
+  const [enable, setEnable] = useState(true);
 
   useEffect(() => {
     fetchUserData(randomId);
@@ -104,6 +105,7 @@ function App() {
           // })
 
           setBusInfoList(prev => [...prev, transformedInfo]);
+          setEnable(false);
         })
       })
     });
@@ -115,6 +117,7 @@ function App() {
 
   const backHandler = () => {
     setShow(true);
+    setEnable(true);
     setBusInfoList(prev => []);
     randomId = test_users[Math.floor(Math.random()*test_users.length)];
     fetchUserData(randomId);
@@ -123,9 +126,9 @@ function App() {
 
   return (
     <div className="App">
-      <div style={{display: show ? "block" : "none"}}>
+      <div className='App-title' style={{display: show ? "block" : "none"}}>
         <h1>Yelp Recommendation Engine</h1>
-        <button onClick={buttonHandler}>Generate Recommendations</button>
+        <button onClick={buttonHandler} disabled={enable}>Generate Recommendations</button>
       </div>
       <div className="App-container" style={{display: show ? "none" : "flex"}}>
         <div>
