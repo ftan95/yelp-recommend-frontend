@@ -19,7 +19,7 @@ function App() {
   }, []);
 
   function fetchUserData(randomId) {
-    fetch(`http://ec2-52-53-159-85.us-west-1.compute.amazonaws.com:8000/searchuser?` + new URLSearchParams({user: randomId}).toString(), {
+    fetch(`https://cors-everywhere.herokuapp.com/http://ec2-3-101-62-92.us-west-1.compute.amazonaws.com:8000/searchuser?` + new URLSearchParams({user: randomId}).toString(), {
       method: 'GET',
       headers: {
           'Content-Type': 'application/json',
@@ -40,7 +40,7 @@ function App() {
   }
 
   function fetchData(randomId) {
-    fetch(`http://ec2-52-53-159-85.us-west-1.compute.amazonaws.com:8000/recommend?` + new URLSearchParams({user: randomId}).toString(), {
+    fetch(`http://ec2-3-101-62-92.us-west-1.compute.amazonaws.com:8000/recommend?` + new URLSearchParams({user: randomId}).toString(), {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ function App() {
         }
       });
       transformedId.forEach((business) => {
-        fetch(`http://52.53.159.85:8000/searchbusiness?` + new URLSearchParams({business: business.busId}).toString(), {
+        fetch(`http://ec2-3-101-62-92.us-west-1.compute.amazonaws.com:8000/searchbusiness?` + new URLSearchParams({business: business.busId}).toString(), {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -75,7 +75,7 @@ function App() {
             rating: data[6]
           });
 
-          fetch(`http://52.53.159.85:8000/reviews?` + new URLSearchParams({business: business.busId}).toString(), {
+          fetch(`http://ec2-3-101-62-92.us-west-1.compute.amazonaws.com:8000/reviews?` + new URLSearchParams({business: business.busId}).toString(), {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
