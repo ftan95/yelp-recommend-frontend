@@ -40,7 +40,7 @@ function App() {
   }
 
   function fetchData(randomId) {
-    fetch(`http://ec2-3-101-62-92.us-west-1.compute.amazonaws.com:8000/recommend?` + new URLSearchParams({user: randomId}).toString(), {
+    fetch(`https://cors-everywhere.herokuapp.com/http://ec2-3-101-62-92.us-west-1.compute.amazonaws.com:8000/recommend?` + new URLSearchParams({user: randomId}).toString(), {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
@@ -57,7 +57,8 @@ function App() {
         }
       });
       transformedId.forEach((business) => {
-        fetch(`http://ec2-3-101-62-92.us-west-1.compute.amazonaws.com:8000/searchbusiness?` + new URLSearchParams({business: business.busId}).toString(), {
+        fetch(`https://cors-everywhere.herokuapp.com/http://ec2-3-101-62-92.us-west-1.compute.amazonaws.com:8000/searchbusiness?` 
+        + new URLSearchParams({business: business.busId}).toString(), {
           method: 'GET',
           headers: {
               'Content-Type': 'application/json',
@@ -75,7 +76,8 @@ function App() {
             rating: data[6]
           });
 
-          fetch(`http://ec2-3-101-62-92.us-west-1.compute.amazonaws.com:8000/reviews?` + new URLSearchParams({business: business.busId}).toString(), {
+          fetch(`https://cors-everywhere.herokuapp.com/http://ec2-3-101-62-92.us-west-1.compute.amazonaws.com:8000/reviews?` + 
+            new URLSearchParams({business: business.busId}).toString(), {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -87,6 +89,20 @@ function App() {
             console.log("review data ", data);
             transformedInfo.summary = data;
           });
+
+          // fetch(`https://cors-everywhere.herokuapp.com/http://ec2-3-101-62-92.us-west-1.compute.amazonaws.com:8000/getphoto?` + 
+          // new URLSearchParams({business: business.busId}).toString(), {
+          //   method: 'GET',
+          //   headers: {
+          //       'Content-Type': 'application/json',
+          //       'Accept': 'application/json'
+          //   }
+          // })
+          // .then(response => console.log(response.text()));
+          // .then((data) => {
+          //   console.log(data);
+          // })
+
           setBusInfoList(prev => [...prev, transformedInfo]);
         })
       })
