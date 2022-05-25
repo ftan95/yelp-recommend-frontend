@@ -128,7 +128,7 @@ function App() {
   return (
     <div className="App">
       <div className='App-title' style={{display: show ? "block" : "none"}}>
-        <h1>Yelp Recommendation Engine</h1>
+        <h1>Yelp Recommendation System</h1>
         <button onClick={buttonHandler} disabled={enable}>Generate Recommendations</button>
         {/* <img src="http://3.101.62.92:8000/uploads/WLahY2PjK6Q992LMidJcJA.jpg" alt="picture" /> */}
       </div>
