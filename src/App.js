@@ -20,7 +20,7 @@ function App() {
   }, []);
 
   function fetchUserData(randomId) {
-    fetch(`https://cors-everywhere.herokuapp.com/http://ec2-3-101-62-92.us-west-1.compute.amazonaws.com:8000/searchuser?` + new URLSearchParams({user: randomId}).toString(), {
+    fetch(`https://cors-everywhere.herokuapp.com/http://ec2-54-177-220-153.us-west-1.compute.amazonaws.com:8000/searchuser?` + new URLSearchParams({user: randomId}).toString(), {
       method: 'GET',
       headers: {
           'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ function App() {
   }
 
   function fetchData(randomId) {
-    fetch(`https://cors-everywhere.herokuapp.com/http://ec2-3-101-62-92.us-west-1.compute.amazonaws.com:8000/recommend?` + new URLSearchParams({user: randomId}).toString(), {
+    fetch(`https://cors-everywhere.herokuapp.com/http://ec2-54-177-220-153.us-west-1.compute.amazonaws.com:8000/recommend?` + new URLSearchParams({user: randomId}).toString(), {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ function App() {
         }
       });
       transformedId.forEach((business) => {
-        fetch(`https://cors-everywhere.herokuapp.com/http://ec2-3-101-62-92.us-west-1.compute.amazonaws.com:8000/searchbusiness?` 
+        fetch(`https://cors-everywhere.herokuapp.com/http://ec2-54-177-220-153.us-west-1.compute.amazonaws.com:8000/searchbusiness?` 
         + new URLSearchParams({business: business.busId}).toString(), {
           method: 'GET',
           headers: {
@@ -77,7 +77,7 @@ function App() {
             rating: data[6]
           });
 
-          fetch(`https://cors-everywhere.herokuapp.com/http://ec2-3-101-62-92.us-west-1.compute.amazonaws.com:8000/reviews?` + 
+          fetch(`https://cors-everywhere.herokuapp.com/http://ec2-54-177-220-153.us-west-1.compute.amazonaws.com:8000/reviews?` + 
             new URLSearchParams({business: business.busId}).toString(), {
             method: 'GET',
             headers: {
@@ -91,7 +91,7 @@ function App() {
             transformedInfo.summary = data;
           });
 
-          fetch(`https://cors-everywhere.herokuapp.com/http://ec2-3-101-62-92.us-west-1.compute.amazonaws.com:8000/getphoto?` + 
+          fetch(`https://cors-everywhere.herokuapp.com/http://ec2-54-177-220-153.us-west-1.compute.amazonaws.com:8000/getphoto?` + 
           new URLSearchParams({business: business.busId}).toString(), {
             method: 'GET',
             headers: {
@@ -144,7 +144,7 @@ function App() {
           {busInfoList.map(bus => 
             <Row className='recommend' key={bus.id}>
               <Col>
-                <img src={'http://3.101.62.92:8000/uploads/'+bus.picture+'.jpg'} className="App-logo" alt="logo" />
+                <img src={'http://ec2-54-177-220-153.us-west-1.compute.amazonaws.com:8000/uploads/'+bus.picture+'.jpg'} className="App-logo" alt="logo" />
               </Col>
               <Col>
                   <h1>{bus.name}</h1>
